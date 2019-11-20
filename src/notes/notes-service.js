@@ -14,12 +14,17 @@ const NotesService = {
     },
     deleteNote(knex, id) {
         return knex('noteful_notes')
-          .where({ id })
-          .delete()
-      },
-      getById(knex, id) {
+            .where({ id })
+            .delete()
+    },
+    getById(knex, id) {
         return knex.from('noteful_notes').select('*').where('id', id).first()
-      },
+    },
+    // updateNote(knex, id, newNoteFields) {
+    //     return knex('noteful_notes')
+    //         .where({ id })
+    //         .update(newNoteFields)
+    // },
 }
 
 module.exports = NotesService

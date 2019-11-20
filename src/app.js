@@ -7,6 +7,7 @@ const { NODE_ENV } = require('./config')
 const noteful = require('./noteful.json')
 // const winston = require('winston')
 const notesRouter = require('./notes/notes-router')
+const foldersRouter = require('./folders/folders-router')
 // const NotesService = require('./notes/notes-service')
 
 const app = express()
@@ -35,11 +36,12 @@ app.use(helmet())
 app.use(cors())
 
 app.use('/api/notes', notesRouter)
+app.use('/api/folders', foldersRouter)
 
-app.get('/api/folders', (req, res) => {
-    res.status(200);
-    res.send(noteful.folders)
-})
+// app.get('/api/folders', (req, res) => {
+//     res.status(200);
+//     res.send(noteful.folders)
+// })
 
 app.get('/api', (req, res) => {
     res.send(noteful)

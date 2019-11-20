@@ -15,6 +15,22 @@ const serializeNote = note => ({
 
 notesRouter
     .route('/')
+    // .all((req, res, next) => {
+    //     NotesService.getById(
+    //         req.app.get('db'),
+    //         req.params.note_id
+    //     )
+    //         .then(note => {
+    //             if (!note) {
+    //                 return res.status(404).json({
+    //                     error: { message: `Note doesn't exist` }
+    //                 })
+    //             }
+    //             res.note = note // save the note for the next middleware
+    //             next() // don't forget to call next so the next middleware happens!
+    //         })
+    //         .catch(next)
+    // })
     .get((req, res, next) => {
         NotesService.getAllNotes(
             req.app.get('db')
@@ -68,7 +84,7 @@ notesRouter
             .catch(next)
     })
     .get((req, res, next) => {
-        res.json(serializenote(res.note))
+        res.json(serializeNote(res.note))
     })
     .delete((req, res, next) => {
         NotesService.deleteNote(
