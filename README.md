@@ -1,7 +1,5 @@
 # noteful-app-server
 
-This is a boilerplate project used for starting new projects!
-
 ## Scripts
 
 Start the application `npm start`
